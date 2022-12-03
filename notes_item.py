@@ -49,5 +49,5 @@ class NotesItem(MenuItem):
                            AddNotesItem, DeleteNotesItem, ExitNotesItem]
 
     def run(self):
-        notes_menu = Menu()
-        notes_menu.run(self.note_items)
+        notes_menu = Menu(self.note_items)
+        notes_menu.show()
