@@ -4,9 +4,7 @@ from colors import bcolors
 
 class ExitItem(MenuItem):
 
-    @classmethod
-    def description(cls):
-        return "Exit"
+    description = "Exit"
 
     def run(self):
         print(f"{bcolors.YELLOW}See you next time, bye!")

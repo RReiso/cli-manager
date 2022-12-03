@@ -1,10 +1,10 @@
 from colors import bcolors
-from menu_items import MENU_ITEMS
 
 
 class Manager:
-    # def __init__(self):
-    # self.OPTIONS = list(range(1, len(MENU_ITEMS) + 1))
+    def __init__(self, menu_items):
+        self.menu_items = menu_items
+        print(self.menu_items)
 
     def start_manager(self):
         print(f"{bcolors.YELLOW}Welcome to your personal manager app!\n")
@@ -14,24 +14,19 @@ class Manager:
         print(
             f"{bcolors.BLUE}What would you like to do? Enter a number!\n" + bcolors.ENDC)
 
-        for idx, item in enumerate(MENU_ITEMS):
-            print(f"{idx + 1}. {item.description()}")
-
-        # for num in self.OPTIONS:
-        #     print(f"{num}. {MENU_ITEMS[num - 1].description()}")
+        for idx, item in enumerate(self.menu_items):
+            menu_index = idx + 1
+            print(item)
+            print(f"{menu_index}. {item.description}")
 
         choice = ""
-        while choice not in range(1, len(MENU_ITEMS) + 1):
-            # while choice not in self.OPTIONS:
+        while choice not in range(1, len(self.menu_items) + 1):
             try:
                 choice = int(input("\nYour choice: "))
             except ValueError:
                 continue
 
-        new_task = MENU_ITEMS[choice - 1]()
+        menu_item_index = choice - 1
+        new_task = self.menu_items[menu_item_index]()
         new_task.run()
         self.show_options()
-
-
-manager = Manager()
-manager.start_manager()

@@ -1,8 +1,6 @@
 class MenuItem:
 
-    @classmethod
-    def description(cls):
-        raise NotImplementedError("'description' method is not implemented")
+    description = "No description set"
 
     def run(self):
         raise NotImplementedError("'run' method is not implemented")

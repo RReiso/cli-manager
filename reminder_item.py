@@ -7,12 +7,10 @@ load_dotenv()
 
 
 class ReminderItem(MenuItem):
+    description = "Set a reminder"
+
     def __init__(self):
         self.REMINDER_WEBHOOK_URL = os.getenv("REMINDER_WEBHOOK_URL")
-
-    @classmethod
-    def description(cls):
-        return "Set a reminder"
 
     def run(self):
         reminder = input("Reminder: ")

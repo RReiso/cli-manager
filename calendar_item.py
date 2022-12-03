@@ -7,13 +7,10 @@ load_dotenv()
 
 
 class CalendarItem(MenuItem):
+    description = "Create a calendar event"
 
     def __init__(self):
         self.CALENDAR_WEBHOOK_URL = os.getenv("CALENDAR_WEBHOOK_URL")
-
-    @classmethod
-    def description(cls):
-        return "Create a calendar event"
 
     def run(self):
         while True:
