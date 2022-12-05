@@ -1,6 +1,7 @@
 from menu_item import MenuItem
 from menu import Menu
 from colors import bcolors
+from utils import TaskStatus
 
 
 class ReadNotesItem(MenuItem):
@@ -11,6 +12,7 @@ class ReadNotesItem(MenuItem):
             f"\n{bcolors.GREEN}Your notes:" + bcolors.ENDC)
         with open("notes.txt", 'r') as notes:
             print(notes.read(), '\n')
+        return TaskStatus.SUCCESS
 
 
 class AddNotesItem(MenuItem):
@@ -22,6 +24,7 @@ class AddNotesItem(MenuItem):
             notes.write("\n" + note)
 
         print(f"{bcolors.GREEN}Note added!\n" + bcolors.ENDC)
+        return TaskStatus.SUCCESS
 
 
 class DeleteNotesItem(MenuItem):
@@ -31,13 +34,14 @@ class DeleteNotesItem(MenuItem):
         with open("notes.txt", 'w') as notes:
             notes.write("")
         print(f"{bcolors.GREEN}Notes deleted!\n" + bcolors.ENDC)
+        return TaskStatus.SUCCESS
 
 
 class ExitNotesItem(MenuItem):
     description = "Return to main menu"
 
     def run(self):
-        exit
+        return TaskStatus.FAIL
 
 
 class NotesItem(MenuItem):
@@ -51,3 +55,4 @@ class NotesItem(MenuItem):
     def run(self):
         notes_menu = Menu(self.note_items)
         notes_menu.show()
+        return TaskStatus.SUCCESS

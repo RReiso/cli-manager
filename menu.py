@@ -1,9 +1,10 @@
 from colors import bcolors
+from utils import TaskStatus
 
 
 class Menu:
 
-    def __init__(self, menu_items):
+    def __init__(self, menu_items: list):
         self.menu_items = menu_items
 
     def show(self):
@@ -14,7 +15,7 @@ class Menu:
             menu_index = idx + 1
             print(f"{menu_index}. {item.description}")
 
-        choice = ""
+        choice = 0
         while choice not in range(1, len(self.menu_items) + 1):
             try:
                 choice = int(input("\nYour choice: "))
@@ -23,7 +24,7 @@ class Menu:
 
         menu_item_index = choice - 1
         new_task = self.menu_items[menu_item_index]()
-        new_task.run()
+        task_status = new_task.run()
 
-        if new_task.description != "Return to main menu":
+        if task_status != TaskStatus.FAIL:
             self.show()

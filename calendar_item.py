@@ -26,3 +26,4 @@ class CalendarItem(MenuItem):
         message = {"date_time": calendar_datetime, "description": description}
 
         utils._send_msg_to_webhook(message, self.CALENDAR_WEBHOOK_URL)
+        return utils.TaskStatus.SUCCESS

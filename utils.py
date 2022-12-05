@@ -2,6 +2,7 @@ from dateutil.parser import parse
 import requests
 from requests.exceptions import HTTPError
 from colors import bcolors
+from enum import Enum
 
 
 def _get_datetime():
@@ -34,3 +35,8 @@ def _send_msg_to_webhook(message, url):
         print(f'HTTP error occurred: {http_err}')
     except Exception as err:
         print(f'Other error occurred: {err}')
+
+
+class TaskStatus():
+    SUCCESS = 0
+    FAIL = 1

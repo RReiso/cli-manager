@@ -31,3 +31,4 @@ class ReminderItem(MenuItem):
         message = {"reminder": reminder, "date_time": reminder_datetime}
 
         utils._send_msg_to_webhook(message, self.REMINDER_WEBHOOK_URL)
+        return utils.TaskStatus.SUCCESS
